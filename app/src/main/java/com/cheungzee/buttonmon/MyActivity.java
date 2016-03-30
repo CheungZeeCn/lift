@@ -84,9 +84,9 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
                     + eventValues[2] * eventValues[2];
             double value =  Math.sqrt(theSum);
 
-            String tableText =  "X:" + String.format("%+3.5f", eventValues[0]) + ";Y:"
+            String tableText =  "X:" + String.format("%+3.5f", eventValues[0]) + ";\nY:"
                         + String.format("%+3.5f", eventValues[1]) +
-                    ";Z:" + String.format("%+3.5f", eventValues[2]) + "\nSIZE:" + value;
+                    ";\nZ:" + String.format("%+3.5f", eventValues[2]) + "\nSIZE:" + value;
 
             //calc
             double filter = 1.0f; // high pass;
@@ -105,12 +105,12 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
                 //set Text;
 
                 String tableText1 =  "vx1:" + String.format("%+3.5f", vx1) +
-                        ";vy1:" + String.format("%+3.5f", vy1) +
-                        ";vz1:" + String.format("%+3.5f", vz1) +
+                        ";\nvy1:" + String.format("%+3.5f", vy1) +
+                        ";\nvz1:" + String.format("%+3.5f", vz1) +
                         "\n去噪后速度:" + vSpeed1 +
                         "\nX1:" + String.format("%+3.5f", x1) +
-                        ";Y1:" + String.format("%+3.5f", y1) +
-                        ";Z1:" + String.format("%+3.5f", z1) +
+                        ";\nY1:" + String.format("%+3.5f", y1) +
+                        ";\nZ1:" + String.format("%+3.5f", z1) +
                         "\n去噪后位移:" + vDistance1;
                 mTime2.setText(tableText1);
             }
@@ -125,8 +125,8 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
             vSpeed = Math.sqrt(vx * vx + vy * vy + vz * vz);
             //set Text;
             String tableText2 =  "vx:" + String.format("%+3.5f", vx)
-                    + ";vy:" + String.format("%+3.5f", vy) +
-                    ";vz:" + String.format("%+3.5f", vz) +
+                    + ";\nvy:" + String.format("%+3.5f", vy) +
+                    ";\nvz:" + String.format("%+3.5f", vz) +
                     "\n带噪速度:" + vSpeed +
                     "\nX:" + x + "\nY:" + y +
                     "\nZ:" + z + "\n带噪位移:" + vDistance;
@@ -226,10 +226,10 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
         // register this class as a listener for the orientation and
         // accelerometer sensors
 
-        //使用 SENSOR_DELAY_FASTEST 更加精确，看需不需要
+        //使用 SENSOR_DELAY_GAME 目测比较准确
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION),
-                SensorManager.SENSOR_DELAY_FASTEST);
+                SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
