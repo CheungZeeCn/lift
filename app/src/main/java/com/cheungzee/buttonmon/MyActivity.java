@@ -225,9 +225,11 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
         super.onResume();
         // register this class as a listener for the orientation and
         // accelerometer sensors
+
+        //使用 SENSOR_DELAY_FASTEST 更加精确，看需不需要
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION),
-                SensorManager.SENSOR_DELAY_NORMAL);
+                SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     @Override
