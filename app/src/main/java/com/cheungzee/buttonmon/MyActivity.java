@@ -30,13 +30,13 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
     public Integer count = 0;
     public Integer count1 = 0;
     public Integer count2 = 0;
-    public float x, y, z = 0;
-    public float x1, y1, z1 = 0;
-    public float vx, vy, vz = 0;
-    public float vx1, vy1, vz1 = 0;
+    public double x, y, z = 0;
+    public double x1, y1, z1 = 0;
+    public double vx, vy, vz = 0;
+    public double vx1, vy1, vz1 = 0;
     private SensorManager mSensorManager;
     private Sensor mSensor;
-    public float lastTimestamp = 0;
+    public double lastTimestamp = 0;
 
 
     @Override
@@ -76,22 +76,22 @@ public class MyActivity extends AppCompatActivity implements SensorEventListener
                 lastTimestamp = event.timestamp;
                 return;
             }
-            float dt = (event.timestamp  - lastTimestamp) / 1000000000.0f;
+            double dt = (event.timestamp  - lastTimestamp) / 1000000000.0f;
             lastTimestamp = event.timestamp;
 
 
-            Float theSum = eventValues[0] * eventValues[0] + eventValues[1] * eventValues[1]
+            double theSum = eventValues[0] * eventValues[0] + eventValues[1] * eventValues[1]
                     + eventValues[2] * eventValues[2];
-            Double value =  Math.sqrt(theSum);
+            double value =  Math.sqrt(theSum);
 
             String tableText =  "X:" + String.format("%+3.5f", eventValues[0]) + ";Y:"
                         + String.format("%+3.5f", eventValues[1]) +
                     ";Z:" + String.format("%+3.5f", eventValues[2]) + "\nSIZE:" + value;
 
             //calc
-            float filter = 1.0f; // high pass;
-            Double vDistance, vDistance1  = 0.0;
-            Double vSpeed, vSpeed1 = 0.0;
+            double filter = 1.0f; // high pass;
+            double vDistance, vDistance1  = 0.0;
+            double vSpeed, vSpeed1 = 0.0;
 
             if(Math.abs(value) >= filter ) {
                 x1 = x1 + vx1*dt + 1/2 * dt * eventValues[0] * dt;
